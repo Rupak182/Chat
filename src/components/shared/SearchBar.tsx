@@ -36,7 +36,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     if (saved) {
       setRecentSearches(JSON.parse(saved));
     }
-    localStorage.removeItem("history")
   }, []);
 
   useEffect(() => {

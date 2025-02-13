@@ -207,9 +207,11 @@ export const ExploreView: React.FC<ExploreViewProps> = ({
       setMessages([]);
       setShowInitialSearch(true);
     };
+    localStorage.removeItem("history")
 
     window.addEventListener('resetExplore', handleReset);
     return () => window.removeEventListener('resetExplore', handleReset);
+
   }, []);
 
   const handleSearch = useCallback(async (query: string) => {
