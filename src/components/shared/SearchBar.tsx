@@ -28,7 +28,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   const [isFocused, setIsFocused] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [history,setHistory]=useState<string[]>([])
 
 
   useEffect(() => {

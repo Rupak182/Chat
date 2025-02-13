@@ -9,7 +9,6 @@ import { PreFillForm } from './components/shared/PreFillForm';
 import { UserContext } from './types';
 import { Toaster, toast } from 'react-hot-toast';
 import { GoogleTagManager } from './components/shared/GoogleTagManager';
-import Sidebar from './components/Layout/Sidebar';
 
 function App() {
   const [userContext, setUserContext] = useState<UserContext | null>(null);

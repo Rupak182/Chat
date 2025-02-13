@@ -1,8 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 
-interface SidebarProps{
-  children:React.ReactNode
-}
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
