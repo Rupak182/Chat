@@ -36,7 +36,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     if (saved) {
       setRecentSearches(JSON.parse(saved));
     }
-    localStorage.removeItem("history");
+    localStorage.removeItem("history")
   }, []);
 
   useEffect(() => {
@@ -52,28 +52,32 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       ].slice(0, 3);
       localStorage.setItem("recentSearches", JSON.stringify(updated));
       let saved = localStorage.getItem("history");
-      let historyArray
-      if (saved) {
-        // Parse the existing history from localStorage
-         historyArray = JSON.parse(saved);
-        // Add the new search query to the history array
-        historyArray.push(searchQuery);
-        // Save the updated history back to localStorage
-        localStorage.setItem("history", JSON.stringify(historyArray));
-      } else {
-        // If there's no history saved yet, create a new array with the current search query
-        localStorage.setItem("history", JSON.stringify([searchQuery]));
+      localStorage.setItem("history", JSON.stringify([searchQuery]));
+      
+//       let query = `
+//   You are tasked with answering the following question by considering the context provided in previous search history.
+//   Below is a list of past search queries:
+//   [${ historyArray.length>0 &&historyArray.join(', ')}]
+
+//   Current search query: ${searchQuery}
+
+//   Please answer the current query by utilizing the context from the previous queries as relevant.
+// `;
+      let query;
+      if(saved){
+       query=`History:${saved}
+        give response for currentQuery:${searchQuery}
+      `
       }
-      let query = `
-  You are tasked with answering the following question by considering the context provided in previous search history.
-  Below is a list of past search queries:
-  [${ historyArray.length>0 &&historyArray.join(', ')}]
 
-  Current search query: ${searchQuery}
+      else{
+        query=searchQuery
+      }
 
-  Please answer the current query by utilizing the context from the previous queries as relevant.
-`;
-      console.log("Queries:",query)
+  
+
+
+      // console.log("Queries:",query)
       onSearch(query);
     }
   };
